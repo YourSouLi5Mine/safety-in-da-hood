@@ -9,13 +9,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to '/' }
-      else
-        format.html { render :new }
-      end
+    if @user.save
+      redirect_to '/'
+    else
+      render :new
     end
   end
 
