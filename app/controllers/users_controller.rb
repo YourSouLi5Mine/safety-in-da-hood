@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: :show
+
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user 
   end
 
   def create
@@ -20,5 +22,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user)
           .permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_url
+    end
   end
 end
