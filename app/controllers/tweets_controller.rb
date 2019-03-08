@@ -12,6 +12,9 @@ class TweetsController < ApplicationController
   end
 
   def destroy
+    @tweet = current_user.tweets.find_by(id: params[:id])
+    @tweet.destroy
+    redirect_to me_url 
   end
 
   private
