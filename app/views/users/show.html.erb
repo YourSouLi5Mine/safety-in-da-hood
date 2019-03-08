@@ -6,7 +6,12 @@
       <h1><%= @user.email %></h1>
     </section>
   </aside>
-  <div class="col-md-8">
+  <div class="col-md-4">
+    <section class="tweet_form">
+      <%= render 'partials/tweet_form' %>
+    </section>
+  </div>
+  <div class="col-md-8 col-md-offset-4">
     <% if @user.tweets.any? %>
       <h3>Tweets (<%= @user.tweets.count %>)</h3>
       <ol class="tweets">

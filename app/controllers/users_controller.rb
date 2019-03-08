@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @tweet = @user.tweets.build if logged_in?
     @tweets = @user.tweets.paginate(page: params[:page])
   end
 
@@ -38,13 +39,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user)
           .permit(:username, :email, :password, :password_confirmation)
-  end
-
-  def require_login
-    unless logged_in?
-      flash[:error] = "You must be logged in to access this section"
-      redirect_to login_url
-    end
   end
 
   def correct_user

@@ -1,5 +1,5 @@
 <%= form_for(@user, url: yield(:url)) do |f| %>
-    <%= render 'partials/error_messages', instance: @user %>
+    <%= render 'partials/error_messages', object: f.object %>
     <%= f.label :username %>
     <%= f.text_field :username, class: 'form-control' %></br>
 
