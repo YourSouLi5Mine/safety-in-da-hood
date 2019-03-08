@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   extend Tokenizer
+  
+  has_many :tweets, dependent: :destroy
 
   attr_accessor :remember_token
 

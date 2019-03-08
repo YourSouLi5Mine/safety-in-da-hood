@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @tweets = @user.tweets.paginate(page: params[:page])
   end
 
   def create
