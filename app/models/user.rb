@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :username, :email, presence: true, uniqueness: true
   validates :email, email: true
-  validates :password, confirmation: true
+  validates :password, confirmation: true, allow_nil: true
   has_secure_password
 
   def remember
