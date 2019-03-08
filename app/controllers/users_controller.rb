@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [:show, :edit, :update]
+  before_action :initialize_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
   before_action :require_logout, only: [:new, :create]
 
@@ -21,11 +22,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = 'Profile updated'
       redirect_to me_url
@@ -48,7 +47,11 @@ class UsersController < ApplicationController
   end
 
   def correct_user
-    @user = User.find(params[:id])
+    initialize_user
     redirect_to me_url unless current_user?(@user)
+  end
+
+  def initialize_user
+    @user = User.find(params[:id])
   end
 end
