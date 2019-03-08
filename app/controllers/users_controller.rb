@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show, :edit, :update]
-  before_action :initialize_user, only: [:edit, :update]
+  before_action :require_login, only: [:index, :show, :edit, :update] 
+  before_action :initialize_user, only: [:edit, :update] 
   before_action :correct_user, only: [:edit, :update]
   before_action :require_logout, only: [:new, :create]
 
   def new
     @user = User.new
+  end
+
+  def index
+    @users = User.paginate(page: params[:page])
   end
 
   def show
