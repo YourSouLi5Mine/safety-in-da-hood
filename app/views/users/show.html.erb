@@ -11,14 +11,25 @@
     <section class="tweet_form">
       <%= render 'partials/tweet_form' %>
     </section>
+    <section class="me">
+      <div class="col-md-8">
+        <% if @user.tweets.any? %>
+          <h3>My Tweets (<%= @user.tweets.count %>)</h3>
+          <ol class="tweets">
+            <%= render @tweets %>
+          </ol>
+          <%= will_paginate @tweets, param_name: 'my_tweets' %>
+        <% end %>
+      </div>
+    </section>
   </aside>
-  <div class="col-md-8"> 
-    <% if @user.tweets.any? %>
-      <h3>Tweets (<%= @user.tweets.count %>)</h3>
+  <div class="col-md-8">
+    <% if @user.following.any? %>
+      <h3>Friends Tweets (<%= @feed.count %>)</h3>
       <ol class="tweets">
-        <%= render @tweets%>
+        <%= render @feed %>
       </ol>
-      <%= will_paginate @tweets %>
+      <%= will_paginate @feed, param_name: 'friends_tweets' %>
     <% end %>
   </div>
 </div>
