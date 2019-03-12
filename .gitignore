@@ -32,3 +32,6 @@
 
 # Ignore tweet image path
 /public/uploads/**
+
+# Ignore env variables
+/config/application.yml
