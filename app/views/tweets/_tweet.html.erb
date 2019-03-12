@@ -1,10 +1,7 @@
 <li id="tweet-<%= tweet.id %>">
   <%= link_to gravatar_for(tweet.user, size: 50), me_path %>
   <span class="user"><%= link_to tweet.user.username, me_path %></span>
-  <span class="content">
-    <%= tweet.content %></br>
-    <%= image_tag tweet.picture.url if tweet.picture? %>
-  </span>
+  <span class="content"><%= tweet.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(tweet.created_at) %> ago.
     <% if current_user?(tweet.user) %>
