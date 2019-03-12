@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @tweet = @user.tweets.build if logged_in?
+    @tweets = @user.tweets.paginate(page: params[:page])
   end
 
   def create
@@ -39,19 +41,12 @@ class UsersController < ApplicationController
           .permit(:username, :email, :password, :password_confirmation)
   end
 
-  def require_login
-    unless logged_in?
-      flash[:error] = "You must be logged in to access this section"
-      redirect_to login_url
-    end
-  end
-
   def correct_user
     initialize_user
     redirect_to me_url unless current_user?(@user)
   end
 
   def initialize_user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 end

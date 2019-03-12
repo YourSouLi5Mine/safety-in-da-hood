@@ -64,3 +64,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'email_validator'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'faker'
