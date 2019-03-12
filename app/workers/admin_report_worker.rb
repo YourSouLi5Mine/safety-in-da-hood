@@ -2,6 +2,6 @@ class AdminReportWorker
   include Sidekiq::Worker
 
   def perform
-    WeeklyMailer.weekly.deliver
+    WeeklyMailer.stats.deliver
   end
 end

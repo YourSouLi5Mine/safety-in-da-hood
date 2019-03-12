@@ -1,7 +1,7 @@
 class WeeklyMailer < ApplicationMailer
   default from: "precichysim@gmail.com"
 
-  def weekly
+  def stats
     @users = User.all
     attachments['weekly_report.pdf'] =
       WickedPdf.new.pdf_from_string(
