@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   extend Tokenizer
-  
+
   has_many :tweets, dependent: :destroy
   has_many :active_follows, class_name:  "Follow",
                             foreign_key: "follower_id",
@@ -42,5 +42,12 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def feed
+    following_ids = "SELECT followed_id FROM follows
+                     WHERE follower_id = :user_id"
+    Tweet.where("user_id IN (#{following_ids})
+                 OR user_id = :user_id", user_id: id)
   end
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:index, :show, :edit, :update] 
-  before_action :initialize_user, only: [:edit, :update] 
+  before_action :require_login, only: [:index, :show, :edit, :update]
+  before_action :initialize_user, only: [:edit, :update]
   before_action :correct_user, only: [:edit, :update]
   before_action :require_logout, only: [:new, :create]
 
@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @tweet = @user.tweets.build if logged_in?
-    @tweets = @user.tweets.paginate(page: params[:page])
+    @tweets = @user.tweets.paginate(page: params[:my_tweets], per_page: 10)
+    @feed = @user.feed.paginate(page: params[:friends_tweets], per_page: 14)
   end
 
   def create
