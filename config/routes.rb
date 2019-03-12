@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  require 'sidekiq/cron/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   root 'home#index'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
