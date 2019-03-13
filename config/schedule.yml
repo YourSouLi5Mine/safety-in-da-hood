@@ -1,0 +1,4 @@
+admin_reporter:
+  cron: "* * * * *"
+  class: "AdminReportWorker"
+  queue: default
