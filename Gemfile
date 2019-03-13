@@ -63,8 +63,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Validates email with simple regex
-gem 'email_validator', '~> 2.0.0'
 # Paginate utility
 gem 'will_paginate', '~> 3.1.6'
 gem 'bootstrap-will_paginate', '~> 1.0.0'

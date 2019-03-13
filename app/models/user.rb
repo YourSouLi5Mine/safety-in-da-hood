@@ -14,7 +14,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
 
   validates :username, :email, presence: true, uniqueness: true
-  validates :email, email: true
+  validates :email, format: { with: /[^\s]@[^\s]/ }
   validates :password, confirmation: true, allow_nil: true
   has_secure_password
 
