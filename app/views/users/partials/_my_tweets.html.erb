@@ -1,0 +1,7 @@
+<% if @my_tweets.any?  %>
+  <h3>My Tweets (<%= @my_tweets.count %>)</h3>
+  <ol class="tweets">
+    <%= render @my_tweets %>
+  </ol>
+  <%= will_paginate @my_tweets, param_name: 'my_tweets' %>
+<% end %>

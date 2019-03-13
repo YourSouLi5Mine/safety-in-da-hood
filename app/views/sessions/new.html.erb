@@ -1,22 +1,10 @@
+<% provide(:button_text, 'Log in') %>
+<% provide(:url, login_path) %>
+
 <div class="row">
   <h1 class="text-center">Login</h1>
-
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-  
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-      
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me, { }, true, false %>
-        <span> Remember me on this computer</span>
-      <% end %>
-
-      <%= f.submit 'Log in', class: 'btn btn-primary' %>
-    <% end %>
-  
+    <%= render 'sessions/partials/login_form' %>
     <p>New user? <%= link_to "Sign up now!", signup_path %>
   </div>
 </div>
