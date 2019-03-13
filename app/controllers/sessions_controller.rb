@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :require_logout, only: [:new, :create]  
+  before_action :require_logout, only: [:new]
 
   def new
   end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to me_url
     else
       flash.now[:error] = 'Invalid email/password combination'
-      render 'new'
+      render :new
     end
   end
 
