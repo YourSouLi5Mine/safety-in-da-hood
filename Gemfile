@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.1'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
@@ -63,16 +63,25 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'email_validator'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
-gem 'faker'
+# Validates email with simple regex
+gem 'email_validator', '~> 2.0.0'
+# Paginate utility
+gem 'will_paginate', '~> 3.1.6'
+gem 'bootstrap-will_paginate', '~> 1.0.0'
+# Utility to create fake data
+gem 'faker', '~> 1.9.3'
+# Personal gem to create avatars
 gem 'magick_minimalistic'
-gem 'carrierwave'
-gem 'jquery-rails'
-gem 'sidekiq'
-gem 'sidekiq-cron'
-gem 'redis'
-gem 'figaro'
-gem 'wkhtmltopdf-binary'
-gem 'wicked_pdf'
+# Easy photo upload
+gem 'carrierwave', '~> 1.3.1'
+# JQuery for Rails
+gem 'jquery-rails', '~> 4.3.3'
+# Background jobs
+gem 'sidekiq', '~> 5.2.5'
+# Cron Jobs
+gem 'sidekiq-cron', '~> 1.1.0'
+# Safe environment variables
+gem 'figaro', '~> 1.1.1'
+# Html to Pdf converter
+gem 'wicked_pdf', '~> 1.1.0'
+gem 'wkhtmltopdf-binary', '0.12.4'
