@@ -41,6 +41,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Rspec
+  gem 'rspec-rails'
+  # Dummy data for testing
+  gem 'factory_bot_rails'
+  # Shoulda
+  gem 'shoulda'
 end
 
 group :development do
@@ -58,6 +64,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -83,5 +90,3 @@ gem 'figaro', '~> 1.1.1'
 # Html to Pdf converter
 gem 'wicked_pdf', '~> 1.1.0'
 gem 'wkhtmltopdf-binary', '0.12.4'
-# Rspec
-gem 'rspec-rails'
