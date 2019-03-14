@@ -35,3 +35,6 @@
 
 # Ignore env variables
 /config/application.yml
+
+# Ignore .DS_Store
+/**/.DS_Store
