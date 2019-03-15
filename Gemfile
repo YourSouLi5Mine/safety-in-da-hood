@@ -47,6 +47,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Shoulda
   gem 'shoulda'
+  # Templates test
+  gem 'rails-controller-testing'
 end
 
 group :development do
