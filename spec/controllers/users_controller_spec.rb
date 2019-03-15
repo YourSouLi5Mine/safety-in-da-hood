@@ -33,5 +33,4 @@ RSpec.describe UsersController, type: :controller do
     it { should redirect_to(root_path) }
     it { should respond_with(302) }
   end
-
 end
