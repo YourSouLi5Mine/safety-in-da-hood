@@ -24,14 +24,17 @@ RSpec.describe UsersController, type: :controller do
 
   context 'GET #new' do
     before { get :new }
-    it { should render_template('new') }
-    it { should respond_with(200) }
+    it 'correct template rendered and status code' do
+      should render_template('new')
+      should respond_with(200)
+    end
   end
 
   context 'POST #create' do
     before { post :create, params: @params }
-    it { should redirect_to(root_path) }
-    it { should respond_with(302) }
+    it 'correct redirect and status code' do
+      should redirect_to(root_path)
+      should respond_with(302)
+    end
   end
-
 end
