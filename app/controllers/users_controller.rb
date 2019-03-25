@@ -1,22 +1,9 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:index, :show, :edit, :update]
-  before_action :initialize_user, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :require_logout, only: [:new, :create]
+  before_action :require_logout, only: [:new]
+  before_action :require_login, only: [:index, :show, :edit]
 
   def new
     @user = User.new
-  end
-
-  def index
-    @users = User.paginate(page: params[:page])
-  end
-
-  def show
-    @user = current_user
-    @tweet = @user.tweets.build if logged_in?
-    @tweets = @user.tweets.paginate(page: params[:my_tweets], per_page: 10)
-    @feed = @user.feed.paginate(page: params[:friends_tweets], per_page: 14)
   end
 
   def create
@@ -28,7 +15,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.paginate(page: params[:page], per_page: 10)
+  end
+
+  def show
+    @user = current_user
+    @new_tweet = @user.tweets.build
+    @my_tweets = @user.tweets.paginate(page: params[:my_tweets], per_page: 10)
+    @feed = @user.feed.paginate(page: params[:feed], per_page: 14)
+  end
+
   def edit
+    @user = current_user
   end
 
   def update
@@ -44,14 +43,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user)
           .permit(:username, :email, :password, :password_confirmation)
-  end
-
-  def correct_user
-    initialize_user
-    redirect_to me_url unless current_user?(@user)
-  end
-
-  def initialize_user
-    @user = User.find_by(id: params[:id])
   end
 end

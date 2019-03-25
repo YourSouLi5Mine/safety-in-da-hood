@@ -1,7 +1,7 @@
-@import "general";
-@import "forms";
-@import "errors";
-@import "sidebar";
-@import "tweets";
-@import "users";
-@import "stats";
+@import "general/general";
+@import "general/forms";
+@import "general/errors";
+@import "users/sidebar";
+@import "tweets/tweets";
+@import "users/users";
+@import "users/stats";

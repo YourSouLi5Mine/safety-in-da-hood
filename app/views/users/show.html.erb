@@ -1,35 +1,19 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1><%= gravatar_for @user %></h1>
-      <h1><%= @user.username %></h1>
-      <h1><%= @user.email %></h1>
+      <%= render 'users/partials/user_info' %>
     </section>
     <section class="stats">
-      <%= render 'partials/stats' %>
+      <%= render 'users/partials/stats' %>
     </section>
-    <section class="tweet_form">
-      <%= render 'partials/tweet_form' %>
+    <section class="new_tweet">
+      <%= render 'users/partials/new_tweet' %>
     </section>
-    <section class="me">
-      <div class="col-md-8">
-        <% if @user.tweets.any? %>
-          <h3>My Tweets (<%= @user.tweets.count %>)</h3>
-          <ol class="tweets">
-            <%= render @tweets %>
-          </ol>
-          <%= will_paginate @tweets, param_name: 'my_tweets' %>
-        <% end %>
-      </div>
+    <section class="my_tweets">
+      <%= render 'users/partials/my_tweets' %>
     </section>
   </aside>
-  <div class="col-md-8">
-    <% if @user.following.any? %>
-      <h3>Friends Tweets (<%= @feed.count %>)</h3>
-      <ol class="tweets">
-        <%= render @feed %>
-      </ol>
-      <%= will_paginate @feed, param_name: 'friends_tweets' %>
-    <% end %>
-  </div>
+  <section class="feed col-md-8">
+    <%= render 'users/partials/feed' %>
+  </section>
 </div>

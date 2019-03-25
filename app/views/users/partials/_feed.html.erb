@@ -1,0 +1,7 @@
+<% if @feed.any? %>
+  <h3>Friends Tweets (<%= @feed.count %>)</h3>
+  <ol class="tweets">
+    <%= render @feed %>
+  </ol>
+  <%= will_paginate @feed, param_name: 'feed' %>
+<% end %>

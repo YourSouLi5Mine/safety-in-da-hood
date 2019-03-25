@@ -1,15 +1,15 @@
 <% provide(:button_text, 'Save changes') %>
 <% provide(:url, edit_me_url) %>
 
-<h1 class="text-center">Edit profile</h1>
 
 <div class="row">
+  <h1 class="text-center">Edit profile</h1>
   <div class="col-md-6 col-md-offset-3">
-    <%= render 'partials/form' %>
+    <%= render 'partials/full_form' %>
+    <div class="gravatar_edit"> 
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank">Change avatar</a>
+    </div>
   </div>
 
-  <div class="gravatar_edit col-md-6 col-md-offset-3">
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails" target="_blank">change</a>
-  </div>
 </div>

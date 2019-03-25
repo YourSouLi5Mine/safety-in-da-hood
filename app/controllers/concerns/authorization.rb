@@ -9,13 +9,13 @@ module Authorization
 
   def current_session
     if (user_id = session[:user_id])
-      @current_user ||= User.find(user_id)
+      @current_user ||= User.find_by(id: user_id)
     end
   end
 
   def current_cookies
     if (user_id = cookies.signed[:user_id])
-      authenticated?(User.find(user_id))
+      authenticated?(User.find_by(id: user_id))
     end
   end
 
@@ -27,6 +27,13 @@ module Authorization
     if logged_in?
       flash[:error] = "You are already logged in"
       redirect_to me_url
+    end
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to access this section"
+      redirect_to login_url
     end
   end
 end
