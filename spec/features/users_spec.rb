@@ -66,8 +66,10 @@ feature 'users' do
     end
 
     scenario 'cookie exists' do
-      token = Capybara.current_session.driver.request.cookies["remember_token"]
-      expect(token).to_not be_nil
+      browser = Capybara.current_session.driver.browser
+      cookie = browser.manage.all_cookies[1]
+      expect(cookie[:name]).to eq "remember_token"
+      expect(cookie[:value]).to_not be_nil
     end
   end
 

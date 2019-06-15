@@ -72,9 +72,11 @@ RSpec.configure do |config|
 
   config.after(:each) do
     if Rails.env.test?
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/test/uploads"])
     end
   end
+
+  Capybara.default_driver = :selenium_chrome
 end
 
 Shoulda::Matchers.configure do |config|
