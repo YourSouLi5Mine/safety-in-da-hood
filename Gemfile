@@ -81,7 +81,7 @@ gem 'faker', '~> 1.9.3'
 # Personal gem to create avatars
 gem 'magick_minimalistic'
 # Easy photo upload
-gem 'carrierwave', '~> 1.3.1'
+gem 'carrierwave', '~> 1.3.2'
 # JQuery for Rails
 gem 'jquery-rails', '~> 4.3.3'
 # Background jobs
